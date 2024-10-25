@@ -1,13 +1,17 @@
 import Header from "../Components/Header";
 import First from "../Components/Home/First";
-import Skills from "../Components/Home/Skills";
+import Services from "../Components/Home/Services";
+import Unique from "../Components/Home/Uniqe";
 
 export default function Home() {
   return (
     <div>
       <Header />
       <First />
-      <Skills />
+      <div className="relative">
+        <Services />
+      </div>
+      <Unique />
     </div>
   );
 }
