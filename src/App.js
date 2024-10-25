@@ -1,16 +1,27 @@
 import "./App.css";
 import Login from "./auth/Login";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Home";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 import Register from "./auth/Register";
+import Logout from "./auth/Logout";
+import Cart from "./pages/Cart";
 function App() {
   return (
     <div className="App">
       <Routes>
+        {!localStorage.getItem("auth") ? (
+          <Route index path="/" element={<Login />} />
+        ) : (
+          <Route path="/" index element={<Home />} />
+        )}
         <Route path="register" element={<Register />} />
         <Route path="home" element={<Home />} />
-        <Route index path="/" element={<Login />} />
+
+        <Route index path="profile" element={<Profile />} />
         <Route index path="login" element={<Login />} />
+        <Route index path="logout" element={<Logout />} />
+        <Route index path="cart" element={<Cart />} />
       </Routes>
     </div>
   );

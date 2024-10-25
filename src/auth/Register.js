@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../Components/Button";
 import Input from "../Components/Input";
 import { useNavigate } from "react-router-dom";
@@ -7,22 +7,31 @@ export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [validation, setValidation] = useState("");
   let navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const item = {
-      name,
-      email,
-      password,
-    };
-    localStorage.setItem("auth", JSON.stringify(item));
-    navigate("/login");
+    if (!name) {
+      setValidation("Full Name is required");
+    } else if (!email) {
+      setValidation("Email is required");
+    } else if (!password) {
+      setValidation("Password is required");
+    } else {
+      const item = {
+        name,
+        email,
+        password,
+      };
+      localStorage.setItem("auth", JSON.stringify(item));
+      navigate("/login");
+    }
   };
 
   return (
     <div className="bg-white mt-12 rounded py-12 px-6 shadow w-[50%] m-auto grid gap-4">
-      <div className="grid gap-1 text-center">
+      <div className="flex flex-col gap-1 text-center">
         <h1 className="text-4xl font-bold">Register</h1>
         <p className="text-gray-400">create new account</p>
       </div>
@@ -51,6 +60,7 @@ export default function Register() {
           value={password}
           setValue={setPassword}
         />
+        {validation && <p className="text-red-500 text-sm">{validation}</p>}
         <Button text="register" />
       </form>
     </div>
