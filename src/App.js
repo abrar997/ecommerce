@@ -1,11 +1,12 @@
 import "./App.css";
-import Login from "./auth/Login";
 import { Route, Routes } from "react-router-dom";
+import Cart from "./pages/Cart";
 import Home from "./pages/Home";
+import Login from "./auth/Login";
+import Logout from "./auth/Logout";
 import Profile from "./pages/Profile";
 import Register from "./auth/Register";
-import Logout from "./auth/Logout";
-import Cart from "./pages/Cart";
+
 function App() {
   return (
     <div className="App">
