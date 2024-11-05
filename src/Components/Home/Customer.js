@@ -1,9 +1,8 @@
-import { BiSolidUser } from "react-icons/bi";
 import { BsCarFront, BsQuote } from "react-icons/bs";
 
 export default function Customer() {
   return (
-    <div className="bg-black my-8 lg:my-12 text-white grid items-center justify-center">
+    <div className="bg-[#00000040] my-8 lg:my-16  grid items-center justify-center">
       <div className="lg:py-12 py-8 px-6 grid lg:gap-8 gap-5 justify-center items-center m-auto">
         <h1 className="text-3xl capitalize font-bold text-center">
           Our Customer Say :

@@ -1,0 +1,111 @@
+//Redux
+// 1-action --->objet with type and payload ,action should has unique names
+// 2-reducer ---> arrow function (state,action)=>{
+// switch (action,type) return , default return }
+// 3-store -->Redux.createStore(reducer)
+// 4-store contain :
+// a-dispatch -->work on action ---> store.dispatch(action)
+// b-getState() render state one time --> store.getState()
+// c-subscribe store.subscribe(()=> { store,getState() } ) render setState after any update
+// ----------------------------------------
+// const type=''
+//syntax of action: 1-const action={
+// type:type
+// }
+//  2-const Withdraw=(amount)=>{ called action creators
+// return {
+// type:"",
+// payload:amount
+// }}
+// ----------------------------
+// syntax of reducer:
+//1-
+// const reducer = (
+//   state = 1000, //(any data type)
+//   action
+// ) => {
+//   switch (action.type) {
+//     case "First":
+//       return state-action.payload;
+//     default:
+//       return "nothing";
+//   }
+// };
+//2- with different data type
+// const reducer = (
+//   state = []
+//   action
+// ) => {
+//   switch (action.type) {
+//     case "First":
+//       return [...state,action.payload];
+//     default:
+//       return "nothing";
+//   }
+// };
+
+// 3-store syntax
+// const store=Redux.createStore(reducer) // if we have one reducer
+//if we have multiple reducers
+//const combinedReducer=Redux.combineReducer({
+// bank (any name) :FirstReducer,
+// Products (any name) :SecondReducer
+// })
+//const store=Redux.createStore(combinedReducer)
+
+// : 1-store.dispatch(action) 2-store.dispatch(Withdraw({id:1,title:""}))
+// ========================
+// when we have API and async we have use redux-thunk with middleware
+// const GET_PRODUCTS = "GET_PRODUCTS";
+// const ADD_PRODUCTS = "ADD_PRODUCTS";
+// const getProducts = (products) => {
+//   return {
+//     type: GET_PRODUCTS,
+//     payload: products,
+//   };
+// };
+// const fetchProducts = () => {
+//   return async (dispatch) => {
+//     const res = fetch("");
+//     const data = res.json();
+//     console.log(data);
+//     dispatch(getProducts(data));
+//   };
+// };
+// const reducer = (state = [], action) => {
+//   switch (action.type) {
+//     case GET_PRODUCTS:
+//       return [...action.payload];
+//     case ADD_PRODUCTS:
+//       return [...state, action.payload];
+//     default:
+//       return "nothing";
+//   }
+// };
+// const combinedReducer = Redux.combineReducer({
+//   bank: FirstReducer,
+//   Products: reducer,
+// });
+// const store = Redux.createStore(
+//   combinedReducer,
+//   Redux.applyMiddleWare(ReduxThunk)
+// );
+
+// to start use it in files
+{
+  /* <div>
+  <h1 className="flex text-3xl items-center justify-center">{state}</h1>
+  <button
+    onClick={() => dispatch(withdraw(100))}
+    className="bg-red-600 px-4 py-2 rounded text-white"
+  >
+    withdraw
+  </button>
+  <button
+    onClick={() => dispatch(deposit(100))}
+    className="bg-red-600 px-4 py-2 rounded text-white"
+  >
+    Deposit
+  </button>
+</div>; */
+}

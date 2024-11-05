@@ -6,6 +6,7 @@ import Login from "./auth/Login";
 import Logout from "./auth/Logout";
 import Profile from "./pages/Profile";
 import Register from "./auth/Register";
+import ProductDetails from "./Components/Products/ProductDetails";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route index path="login" element={<Login />} />
         <Route index path="logout" element={<Logout />} />
         <Route index path="cart" element={<Cart />} />
+        <Route index path="/product/:productId" element={<ProductDetails />} />
       </Routes>
     </div>
   );
