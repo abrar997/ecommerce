@@ -9,21 +9,28 @@ import Slider from "../Components/Slider";
 // import { fetchAllProducts } from "../store/actions/product-actions";
 import { useEffect } from "react";
 // import { deposit, withdraw } from "../rtk/slices/slice-bank";
-import {
-  addNewProduct,
-  fetchAllProducts,
-  fetchAllProductsAsync,
-} from "../rtk/slices/slice-products";
-
+// import {
+//   addNewProduct,
+//   fetchAllProducts,
+//   fetchAllProductsAsync,
+// } from "../rtk/slices/slice-products";
+import { fetchAllProducts } from "../rtk/slice/slice-product";
 function Home() {
   const dispatch = useDispatch();
-  // const state = useSelector((state) => state.bank);
-  const products = useSelector((state) => state.product);
+  // // const state = useSelector((state) => state.bank);
+  // const products = useSelector((state) => state.product);
+  // console.log(products);
+
+  // useEffect(() => {
+  //   // dispatch(fetchAllProducts());
+  //   dispatch(fetchAllProductsAsync());
+  // }, []);
+
+  const products = useSelector((state) => state.products);
   console.log(products);
 
   useEffect(() => {
-    // dispatch(fetchAllProducts());
-    dispatch(fetchAllProductsAsync());
+    dispatch(fetchAllProducts());
   }, []);
 
   return (
@@ -54,11 +61,11 @@ function Home() {
       </ProductsContextProvider> */}
 
       <Slider title="Our Unique Cars" data={products} isFirst />
-      <button
+      {/* <button
         onClick={() => dispatch(addNewProduct({ id: 1, title: "new item" }))}
       >
         add new product
-      </button>
+      </button> */}
       {/* <button
         onClick={() =>
           dispatch(

@@ -1,13 +1,19 @@
-import { BsCart, BsFlower1, BsPerson } from "react-icons/bs";
+import { BsCart, BsPerson } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import LinkItem from "./LinkItem";
 import { IoCarSportOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+  const items = useSelector((state) => state.cart);
+  const itemsLength = items.length;
+
   let data = JSON.parse(localStorage.getItem("auth"))
     ? JSON.parse(localStorage.getItem("auth"))
     : "";
+
   const style = `px-4 py-1.5 rounded font-semibold`;
+
   return (
     <div className="py-4 lg:py-6 lg:px-12 px-4 flex justify-between items-center">
       <Link
@@ -52,7 +58,7 @@ export default function Header() {
         >
           <BsCart size={23} />
           <span className="absolute bg-gray-900 -top-3 -right-3 rounded-full text-white lg:w-6 lg:h-6 w-5 h-5 flex items-center justify-center">
-            3
+            {itemsLength > 0 ? itemsLength : 0}
           </span>
         </Link>
       </div>
